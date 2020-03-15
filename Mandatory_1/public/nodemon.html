@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nodemon</title>
+</head>
+<body>
+    <div id="title">
+    <h1>Nodemon</h1>
+</div>
+<ul id="list" class="info-list">
+    <li>  a tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory are detected. </li>
+    <li> npm install -g nodemon - inslall globally to your system path</li>
+    <li> 'nodemon app.js' - enter mode </li>
+    <li> 'ctrl + C' x2 - exit mode </li>
+    <li>  'npm i -D nodemon' - install nodemon as a development dependency</li>
+
+    <h4> In order to avoid "File … cannot be loaded.  The file is not digitally signed.  The script will not be executed on the system. " you need to run the below command: </h4>
+    <li> Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass </li>
+    </ul>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./index.js"></script>
+
+    <script>
+
+        $(document).ready(function() {
+            $("#title h1").css("color", "#af9cff");
+		});
+
+    </script>
+</body>
+</html>

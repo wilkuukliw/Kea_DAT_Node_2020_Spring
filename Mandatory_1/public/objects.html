@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON objects</title>
+</head>
+<body>
+    <div id="title">
+        <h1>JSON objects</h1>
+    </div>        
+    <ul id="list" class="info-list">
+        <img src="/object.jpg" type="img/jpg"/>
+        <li><p>written in key/value pairs. </p></li>
+        <li>keys must be strings, and values must be a valid JSON data type (string, number, object, array, boolean or null). </li>
+        <li><p>you can access the object values by using dot (.) notation:</p></li>
+        <img src="/dot.jpg" type="img/jpg"/>
+        <li><p>you can use the delete keyword to delete properties from a JSON object:</p> </li>
+        <img src="/delete.jpg" type="img/jpg"/>
+    </ul>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./index.js"></script>
+    <script>
+
+        $(document).ready(function() {
+            $("#title h1").css("color", "#af9cff");
+		});
+
+    </script>
+</body>
+</html>

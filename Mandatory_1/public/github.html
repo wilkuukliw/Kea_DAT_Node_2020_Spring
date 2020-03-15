@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub</title>
+</head>
+<body>
+    <div id="title">
+        <h1> GitHub commands reminder:</h1>
+    </div>
+    <ul id="list" class="command-list">
+        <li>git add .  - adds all changes. </li>
+        <li>git commit -m “comment”   - commits code. </li>
+        <li>git push - adds code to GitHub. </li>
+    </ul>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./index.js"></script>
+    <script>
+
+        $(document).ready(function() {
+            $("#title h1").css("color", "#af9cff");
+		});
+
+    </script>
+</body>
+</html>

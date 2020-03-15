@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery</title>
+</head>
+<body>
+    <div id="title">
+        <h1>jQuery is a JavaScript library designed to simplify HTML DOM tree traversal and manipulation, as well as event handling, CSS animation, and Ajax. </h1>
+    </div>
+    <ul id="list" class="command-list">
+    <h3>To serve your project with jQuery, add below line in your html file at the end, just before body closing tag</h3>
+        <img src="/linkjquery.jpg" type="img/jpg"/>
+    <li><p>npx budo index.js --live --open - enable LiveReload on HTML/CSS/JS file changes.</p></li>
+    <h3>The Document Object Model (DOM) is the method by which JavaScript (and jQuery) interact with the HTML in a browser. To view exactly what the DOM is, in your web browser, right click on the current web page select Inspect. This will open up Developer Tools. The HTML code you see here is the DOM.</h3>
+    <h3>jQuery is called with and represented by the dollar sign ($). We access the DOM with jQuery using mostly CSS syntax, and apply an action with a method. A basic jQuery example follows this format.</h3>
+        <img src="/jquerydollar.jpg" type="img/jpg"/>
+
+    <h3>Selectors are how we tell jQuery which elements we want to work on:</h3>
+        <li> $("*") - Wildcard: selects every element on the page. </li>
+        <li> $(this) - Current: selects the current element being operated on within a function. </li>
+        <li> $("p") - Tag: selects every instance of the p tag. </li>
+        <li> $(".example") - Class: selects every element that has the example class applied to it. </li>
+        <li> $("#example") - Id: selects a single instance of the unique example id. </li>
+    
+    <h3>.append() and .html() are the most useful methods in jQuery. But these are far different from one another, .append() add some value to the existing one. Where .html() do the same but it removes the old value first</h3>
+    <h3> The .empty() method removes all child nodes and content from the selected elements and .text() method is used to set or return the text content of the selected elements.</h3>
+        <li> To return content: When this method is used to return content, it returns the combined text content of all matched elements without the HTML markup. </li>
+        <li> To set content: When this method is used to set content, it overwrites the content of all matched elements: </li>
+    </ul>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./index.js"></script>
+    <script>
+
+
+        $(document).ready(function() {
+            $("#title h1").css("color", "#af9cff");
+		});
+
+    </script>
+</body>
+</html>

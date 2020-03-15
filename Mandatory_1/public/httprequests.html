@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Http requests</title>
+</head>
+<body>
+
+    <div id="title">
+        <h1>Request & Response</h1>
+    </div>
+    <h3>Express application uses a callback function whose parameters are request and response objects. </h3>
+        <img src="/callback.jpg" type="img/jpg"/>
+
+        <ul id="list" class="http-list">
+            <li> Request Object − The request object represents the HTTP request and has properties for the request query string, parameters, body, HTTP headers, and so on. </li>
+            <li> Response Object − The response object represents the HTTP response that an Express app sends when it gets an HTTP request. </li>
+            </ul>
+    <div id="title">
+        <h1>Basic Routing</h1>
+    </div>
+    <h3> Routing refers to determining how an application responds to a client request to a particular endpoint, which is a URI (or path) and a specific HTTP request method:</h3>
+    
+    <ul id="list" class="request-list">
+        <li><p> GET request - </p></li>
+            <img src="/get.jpg" type="img/jpg"/>
+        <li><p> POST request - </p></li>
+            <img src="/post.jpg" type="img/jpg"/>
+        <li><p>PUT and DELETE requests use the same POST request format, and just change the options.method value.</p></li>
+    </ul>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./index.js"></script>
+    <script>
+
+        $(document).ready(function() {
+            $("#title h1").css("color", "#af9cff");
+		});
+
+    </script>
+</body>
+</html>

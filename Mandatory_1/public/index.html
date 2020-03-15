@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation of my learnings</title>
+    <style type="text/css">
+        h1 {
+            text-align: center
+        }
+        li {
+    		list-style-position: inside;
+		}
+    </style>
+</head>
+<body>
+    <div id="title">
+        <h1> Hi there - this is my notebook where I want to present you with all the information I learned about Node.js so far.
+        It serves as a handy reminder that can be reached in any point of my life.</h1>
+    </div>
+    <ol id="list">
+        <li> <a href="/about">What actually is Node.js?</a> </li>
+        <li> <a href="/facts">Interesting facts</a> </li>
+        <li><a href="/tools">Tools & commands</a> </li>
+        <li><a href="/functions">Basic functions</a> </li> 
+        <li><a href="/objects">JSON object</a> </li>
+    </ol>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+
+        $(document).ready(function() {
+            $("#title h1").css("color", "#9cffdb");
+			$("#list li").css("font-weight", "bold");
+            $("#list li").css("text-decoration", "underline");
+            $("body").css("background-color", "#8888ff");
+            $("#title h1").css("border-style", "dotted");
+            $("#list li").css("font-size", "1.5em");
+		});
+
+    </script>
+</body>
+</html>

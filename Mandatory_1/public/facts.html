@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facts</title>
+    <style type="text/css">
+        ul {
+            background: #3399ff;
+            padding: 20px;
+        }
+        ul li {
+            background: #cce5ff;
+            margin: 5px;
+        }
+        li {
+    		list-style-position: inside;
+		}
+    </style>
+</head>
+<body>
+    <div id="title">
+        <h1>Interesting facts noted during classes:</h1>
+    </div>
+    <ul id="list" class="fact-list">
+        <li>Avoid global variables such as hectic 'var'. Tip: use 'let' instead, or alternativelly, when you know your code is not going to change, go for 'const'.</li>
+        <li>Global access modifiers are also to be avoided in most cases. The notations is '__name'.</li>
+        <li>Hoisting - you can give values to variables and define fuctions later as JS reads whole code, parses it and eventually looks for suitable functions to run.</li>
+        <li>A Callback is a feature that is Node.js's asynchronous nature related. This is simply a function passed as an argument to another function which will then use it (call it back).</li>
+        <li>Callback function reduces waiting time as it prevents any blocking when a proces takes a little bit more time, and allows other code to be run in the meantime.</li>
+        <li>Arrow notation is better that dot notation when it comes to a 'create new function' syntax. It saves some code, therefore makes your syntax shorter, simpler and thus makes your code readable.</li>
+        <li>When you send your code to somebody, either by zip file or by pushing to github, always remember not to include node_modules as they're heavy and can cause merge conflicts. Tips add node_modules folder to the .gitignore file.</li>
+        <li>GET request is unencrypted! You should never use it with sensitive data. Tip: use encrypted POST instead.</li>
+        <li>In GET request, dynamic variables are defined after collon.</li>
+        <li>To avoid so called "header" error, use return statement before res.send();</li>
+        <li>/script is called SELF closing tag, not just closing tag.</li>
+        <li>Link is called anchor tag in JS.</li>
+        <li>Double-quoted strings are preferred by the jQuery style guide, though single-quoted strings are often used as well.</li>
+    </ul>    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./index.js"></script>
+    <script>
+
+        $(document).ready(function() {
+            $("#title h1").css("color", "#af9cff");
+		});
+
+    </script>
+</body>
+</html>
