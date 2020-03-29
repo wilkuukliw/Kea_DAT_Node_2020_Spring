@@ -10,12 +10,34 @@ app.use(express.json());
 app.use(express.static('public'));
 app.use(express.static('videos'));
 
+const fs = require('fs');   // file system module
 
-app.get("/video/:videoid", (req, res) => {
-    return res.sendFile(__dirname + "/public/video.html");
+// here: load the navbar and console.log it
+const navbarPage = fs.readFileSync("public/navbar/navbar.html", "utf8"); //sync means the other thread will not start unless main not stop 
+const footerPage = fs.readFileSync("public/footer/footer.html", "utf8");
+
+const indexPage = fs.readFileSync("public/index/index.html", "utf8");
+const playerPage = fs.readFileSync("public/player/player.html", "utf8");
+const uploadPage = fs.readFileSync("public/upload/upload.html", "utf8");
+
+app.get("/", (req, res) => {           //serving html, frontend 
+   return res.send(navbarPage + indexPage + footerPage);
 });
 
+//server render code
+app.get("/player/:videoid", (req, res) => {
+    return res.send(navbarPage + playerPage + footerPage);
+});
 
+app.get("/upload", (req, res) => {
+    return res.send(navbarPage + uploadPage + footerPage);
+ });
+
+// Import routes
+const videosRoute = require("./routes/videos");
+
+//Setup routes
+app.use(videosRoute)
 
 const port = process.env.PORT ? process.env.PORT : 3000;
 
