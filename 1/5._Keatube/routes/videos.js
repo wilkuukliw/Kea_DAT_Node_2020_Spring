@@ -11,7 +11,7 @@ const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, "videos/");
     },
-    filename: (req, file, cb) => {
+    filename: (req, file, cb) => {   // checking if this is video or not
         const fileName = crypto.randomBytes(20).toString("hex");
         const mimetypeArray = file.mimetype.split("/");   //  MIME type (or media type) is an identifier for file formats on the Internet. MIME stands for Multipurpose Internet Mail Extension
         if (mimetypeArray[0] === "video") {
@@ -57,8 +57,36 @@ router.get("/videos/:videoId", (req,res) => {
 });
 
 router.post("/videos", upload.single('video'), (req, res) => {
-    console.log(req.file);
-    return res.redirect("/");
+   /* console.log(req.body);
+    console.log(req.file); */
+
+    let errors = [];
+
+    // 1.server side validate  //2 create and add object
+    const video = {
+        fileName: req.file.filename,
+        thumbnail: "",  //todo
+        description: req.body.description || "",
+        category: req.body.category || "Unknown",
+        tags: req.body.tags.split(/\[\s*]\s*/),   //s means whitespace
+        uploadDate: new Date()
+    };
+
+
+    if (video.title.length < 8 || video.title.length > 64) {
+        errors.push("Title can't be between 8 and 64.");
+    }
+
+    if (video.description.length > 2048) {
+        errors.push("The description can't be longer than 2048 chars.");
+    }
+
+    if (errors.length > 0) {
+        return res.send({ response: errors });
+    } else {
+        videos.push(video);
+        return res.redirect(`/player/$video.fileName`); // redirect directly to the player once video gets uploaded
+    } 
 });
 
 

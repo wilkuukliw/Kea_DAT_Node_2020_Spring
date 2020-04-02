@@ -9,6 +9,7 @@ app.use(express.json());
 
 app.use(express.static('public'));
 app.use(express.static('videos'));
+app.use(express.static('addition'));
 
 const fs = require('fs');   // file system module
 
@@ -32,6 +33,11 @@ app.get("/player/:videoid", (req, res) => {
 app.get("/upload", (req, res) => {
     return res.send(navbarPage + uploadPage + footerPage);
  });
+
+ app.get("/svg", (req,res) => {
+    console.log(__dirname);
+    return res.sendFile(__dirname + "/addition/svg.html");
+});
 
 // Import routes
 const videosRoute = require("./routes/videos");
