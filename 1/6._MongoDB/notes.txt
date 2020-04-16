@@ -1,0 +1,40 @@
+MySQL(Relational Database example) vs. NoSQL
+
+MySQL                       MongoDB
+MariaDB                     DynamoDB
+OracleDB                    Firebase
+PostgreSQL                  Neo
+msSQL                       Realm
+CouchDB
+
+
+// MongoDB
+
+collections: furniture
+
+[
+    {
+        "key": value
+    },
+    {   
+        "price": 20.00
+    }
+]
+
+
+// MongoDB usecases:
+
+
+-when you re not sure about the schema yet   -- lead to rapis prototyping 
+- type of companies: start-ups
+
+Don't use:
+
+- data is consistient or Relational
+- data that is crucial, you have to be careful
+- if you have set schema
+
+More info:
+    MongoDB you handle relations, data validation etc. in the application layer
+    For relational database you can also do it in the application layer 
+                    but the database is another safety net
