@@ -4,15 +4,16 @@ const connectionUrl = "mongodb://localhost:27017";                              
 const dbName = "animalfarm";
 
 
-mongoClient.connect(connectionUrl, {useUnifiedTopology: true}, (error, client) => {   /*connected to mondgo client*/
+mongoClient.connect(connectionUrl, {useUnifiedTopology: true}, (error, client) => {   /*connected to mondgo client via callback*/
     if (error) {
         throw "Eror connecting to mongodb " + error;
     }
     const animalFarmDB = client.db(dbName);
     const buildings = animalFarmDB.collection('buildings');
 
-    buildings.find({type: {$exists: true}}).toArray((error, foundBuildings) => {
-        console.log(foundBuildings);
+
+    buildings.insertOne({type: "pen"}, (error, result) => {
+        console.log(result);
         client.close();
     });
 });
