@@ -15,10 +15,11 @@ exports.up = function(knex) {
             table.integer('role_id').unsigned().notNullable();
             table.foreign('role_id').references('roles.id');
 
-            table.dateTime('updated_at').notNullable().defaultTo(knex.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+            table.dateTime('updated_at').defaultTo(knex.raw('NULL ON UPDATE CURRENT_TIMESTAMP'));
             table.dateTime('created_at').notNullable().defaultTo(knex.raw('CURRENT_TIMESTAMP'));
         });
 };
+
  //rollback
 exports.down = function(knex) {
     return knex.schema
