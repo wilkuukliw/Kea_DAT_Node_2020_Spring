@@ -1,9 +1,24 @@
 const { Model } = require('objection');
 
-class User extends Model {
+const Role = require('./Role.js')
 
-    static get tableName() {
-        return 'users';
+class User extends Model {
+    static tableName = 'users'
+
+
+   
+    static relationMappings = {   //docummentation on that is vincit.githb.io
+        role: {
+            relation: Model.BelongsToOneRelation,   // bi-directional
+            modelClass: Role,
+            join: {
+                from: 'users.roleId',
+                to: 'roles.id'
+            }
+
+
+        }
+
     }
 }
 

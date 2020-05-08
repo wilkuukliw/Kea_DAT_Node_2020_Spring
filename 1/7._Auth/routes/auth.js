@@ -1,18 +1,30 @@
 const route = require("express").Router();
 const User = require('../models/User.js');
+const Role = require('../models/Role.js');
+
+const bcrypt = require('bcrypt'); // blowish crypter :) to encrypt password
+const saltRounds = 12;  // not sure what is that
 
 
 
 route.post("/login", (req, res) => {   
+    // 1. retrieve the login details and validate
+    // 2. check for a user match in the database
+    // 3. bcrypt compare
+    // 4. sessions
 
-    res.send({message: "Hello there"});    //to make get request
+    bcrypt.compare("plaintextPassword", "hashedPasswordToCompareWith").then((result) => {   //plaintext password comes from login form 
+        console.log(result);
+    });
+
+    return res.send({response: "Hello there"});    //to make get request
     
     });   
 
 route.post("/signup", async (req, res) => {   // async-await
     // const users = await User.query().select();
 
-    //username, password, repeat password
+    // fields required: username, password, repeat password
     const { username, password, passwordRepeat } = req.body;
 
     const isPasswordTheSame = password == passwordRepeat;
@@ -29,13 +41,18 @@ route.post("/signup", async (req, res) => {   // async-await
                 return res.status(400).send({ response: "User already exists" });
             } else {
 
-                // todo implement the Role model
-                // await Role.query().select().where({ 'role': 'USER' });
+                // todo implement the Role model using await instead
+                const defaultUserRoles =  await Role.query().select().where({ 'role': 'USER' });
+
+                const hashedPassword = await bcrypt.hash(password, saltRounds);
+                
                 const createdUser = await User.query().insert({
+
                     username,
-                    password,
-                    roleId: 2
+                    password: hashedPassword,
+                    roleId: defaultUserRoles[0].id
                 });
+
                 return res.send({ response: `User has been created with the username ${createdUser.username}` });
             }
 
@@ -54,7 +71,8 @@ route.post("/signup", async (req, res) => {   // async-await
 
 route.post("/logout", (req, res) => {   
 
-    res.send({message: "Hello there"});   
+   // todo: destroy the session
+    return res.send({message: "Hello there"});   
         
     });   
 
