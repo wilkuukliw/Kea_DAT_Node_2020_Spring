@@ -1,0 +1,17 @@
+{
+  "name": "sockets",
+  "version": "1.0.0",
+  "description": "simple chat application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "escape-html": "^1.0.3",
+    "express": "^4.17.1",
+    "helmet": "^3.22.0",
+    "socket.io": "^2.3.0"
+  }
+}
