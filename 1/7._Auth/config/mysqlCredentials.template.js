@@ -1,6 +1,6 @@
 module.exports = {
     database: 'my_db',
-    user:     'root',
+    user: 'root',
     password: 'password',
-    sessionSecret: 'password'
+    sessionSecret: 'some session secret'
 };

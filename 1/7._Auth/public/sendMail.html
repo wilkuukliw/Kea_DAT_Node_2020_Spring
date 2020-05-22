@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+ 
+    <link type="text/css" rel="stylesheet" href="stylesheets/global.css">
+    <link type="text/css" rel="stylesheet" href="stylesheets/bootstrap.css">
+   
+    <link href="https://fonts.googleapis.com/css2?family=Faster+One&family=Thasadith&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- HEADER SECTION -->
+  <!-- navbar -->
+  <section class="main-header">
+      <div class="collapse navbar-collapse" id="main-navbar">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/projects">projects</a>
+          </li>
+          <li class="nav-item" id="partners">
+            <a class="nav-link" href="/partners">partners</a>
+          </li>
+          <li class="nav-item" id="sendMail">
+            <a class="nav-link" href="/sendMail">contact</a>
+          </li>
+          <li class="secret">
+            <a class="nav-link" href="secret">secret</a>
+          </li>
+          <li class="logout">
+            <a class="nav-link" href="logout">log out</a>
+          </li>
+        </ul>
+      </div>
+
+  <!-- contact form -->
+  <section class="container contact-form">
+     <form action="/sendMail" method="POST">
+        <div class="form-group">
+            <label for="message">message</label>
+                <textarea name="text" class="form-control" id="message" placeholder="write here.. no sign limit and you can stretch the view! ->" required></textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="button-send">send</button>
+        </div>
+      </form>
+  </section>
+        
+  <!-- FOOTER -->
+    <!-- copyrights -->
+    <p id="copyright-paragraph">Copyright Anna Maria Wilczek ©</p>
+
+<!-- JQUERY and BOOTSRTAP-->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<script>
+
+  const currentYear = new Date().getFullYear();
+        console.log(currentYear);
+        $("#copyright-paragraph").text("Copyright Anna Maria Wilczek © " + currentYear)
+
+</script>
+
+</body>
+</html>

@@ -6,7 +6,7 @@ class Role extends Model {
 
     static tableName = 'roles'
 
-    static relationMappings = {   //docummentation on that is vincit.githb.io
+    static relationMappings = {   //documentation >> vincit.githb.io
         users: {
             relation: Model.HasManyRelation,
             modelClass: User,
@@ -14,10 +14,7 @@ class Role extends Model {
                 from: 'roles.id',
                 to: 'users.roleId'
             }
-
-
         }
-
     }
 }
 

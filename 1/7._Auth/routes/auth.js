@@ -1,29 +1,49 @@
-const route = require("express").Router();
+const router = require("express").Router();
+const path = require('path');
 const User = require('../models/User.js');
 const Role = require('../models/Role.js');
+const bcrypt = require('bcrypt'); // blowish crypter :) to encrypt/hash password
+const saltRounds = 12;  
 
-const bcrypt = require('bcrypt'); // blowish crypter :) to encrypt password
-const saltRounds = 12;  // not sure what is that
+//We need to now handle the POST request, basically what happens here is when the client enters their details in the login form and clicks the submit button, 
+//the form data will be sent to the server, and with that data our login script will check in our database's accounts table to see if the details are correct.
 
+router.get('/login', (req, res) => {
+    return res.sendFile(path.join(__dirname, '../public/login/login.html'));
+});
 
+router.post('/login', async (req, res) => {
+    const {username, password} = req.body;
 
-route.post("/login", (req, res) => {   
-    // 1. retrieve the login details and validate
-    // 2. check for a user match in the database
-    // 3. bcrypt compare
-    // 4. sessions
+    try {
+        const userFound = await User.query().select().where('username', username);
+        if (userFound.length === 0) {
+            return res.status(400).send({ response: "User does not exist" });
+        } 
 
-    bcrypt.compare("plaintextPassword", "hashedPasswordToCompareWith").then((result) => {   //plaintext password comes from login form 
-        console.log(result);
-    });
+        const match = await bcrypt.compare(password, userFound[0].password);
+        if(match) {
+            //Make session on success
+            req.session.username = username;
+            req.session.user = {id: userFound[0].id, role:userFound[0].role_id}
+            return res.redirect("/");
+        }
+    } catch(error) {
+        return res.status(500).send({ response: "Something went wrong with the database" });
+    }
 
-    return res.send({response: "Hello there"});    //to make get request
-    
-    });   
+    return res.status(400).send({ response: "Incorrect password" });
+});
 
-route.post("/signup", async (req, res) => {   // async-await
-    // const users = await User.query().select();
+//If the result returned from the table exists we create two session variables, one to determine if the client is logged in and the other will be their username.
+//Stored in cookies. Entirely live on the server. 
 
+router.get('/signup', (req, res) => {
+    return res.sendFile(path.join(__dirname, '../public/signup/signup.html'));
+});
+
+router.post("/signup", async (req, res) => {   // async (promise)
+ 
     // fields required: username, password, repeat password
     const { username, password, passwordRepeat } = req.body;
 
@@ -36,12 +56,11 @@ route.post("/signup", async (req, res) => {   // async-await
         } else {
             try {
                 
-            const userFound = await User.query().select().where({ 'username': username }).limit(1);
-            if (userFound.length > 0) {
-                return res.status(400).send({ response: "User already exists" });
+                const userFound = await User.query().select().where({ 'username': username }).limit(1);
+                if (userFound.length > 0) {
+                    return res.status(400).send({ response: "User already exists" });
             } else {
-
-                // todo implement the Role model using await instead
+                // Role model uses await instead (promise)
                 const defaultUserRoles =  await Role.query().select().where({ 'role': 'USER' });
 
                 const hashedPassword = await bcrypt.hash(password, saltRounds);
@@ -53,13 +72,16 @@ route.post("/signup", async (req, res) => {   // async-await
                     roleId: defaultUserRoles[0].id
                 });
 
-                return res.send({ response: `User has been created with the username ${createdUser.username}` });
+                return res.send({ response: `User has been created with the username ${createdUser.username} You can now log in` });
             }
 
             } catch (error) {
                 return res.status(500).send({ response: "Something went wrong with the database" });
             }
+
         }
+
+    //If no results are returned we send to the client an error message, this message will let the client know they've entered the wrong details.
 
     } else if (password && passwordRepeat && !isPasswordTheSame) {
         return res.status(400).send({ response: "Passwords do not match. Fields: password and passwordRepeat" });
@@ -69,11 +91,13 @@ route.post("/signup", async (req, res) => {   // async-await
     
 });
 
-route.post("/logout", (req, res) => {   
+router.get("/logout", (req, res) => {   
+    req.session.destroy((error) => {
+        if(error) {
+            return res.send({ response: "Something went wrong: ", error })
+        }
+        return res.redirect("/login");
+    });
+});   
 
-   // todo: destroy the session
-    return res.send({message: "Hello there"});   
-        
-    });   
-
-module.exports = route;
+module.exports = router;

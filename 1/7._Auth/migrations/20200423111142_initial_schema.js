@@ -1,5 +1,5 @@
-// DDL = DEFINE = CREATE, DROP (this migrations file)
-// DML = MANIPULATE = SELECT, UPDATE, DELETE (seeds)  --> planting seeds (populate data in database
+// DDL = DEFINE = CREATE, DROP (this is below migrations file)
+// DML = MANIPULATE = SELECT, UPDATE, DELETE (seeds)  --> planting seeds (populate data in database)
 
 exports.up = function(knex) {
 

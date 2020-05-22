@@ -1,0 +1,217 @@
+/* MAIN HEADER  */
+/* logo */
+
+.logo-img {
+   width: 140px; 
+}
+
+.logo {
+    display: flex;
+    justify-content: center; 
+}
+
+.green-leaves {
+    animation-name: blink;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    align-items: center;
+}
+
+/* navbar */
+
+ul {
+    margin: 0 auto;
+    list-style: none;
+}
+
+a {
+    font-family: 'Thasadith', sans-serif;
+    font-weight: 700; 
+    color: #000000 !important; 
+    text-transform: uppercase; 
+    text-align: right;
+    letter-spacing: 2px; 
+    text-decoration: none;
+    display: block;
+    padding: 0.5rem 1rem;
+    padding-left: 0.5rem;
+}
+
+/* Add a hover effect for links */
+
+a:hover {
+    color: #686963 !important; 
+}
+
+b {
+    letter-spacing: 2px; 
+    text-decoration: none;
+    display: block;
+    padding: 1rem 1rem;
+    padding-left: 0.5rem;
+}
+
+/* header */
+
+.header-text {
+    font-family: 'Faster One', cursive;
+    font-size: 3rem; 
+    letter-spacing: 1px; 
+    position:relative; 
+    text-align: center;
+    font-weight: 500;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+/* MAIN BODY */
+
+body {
+    font-family: 'Thasadith', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: -webkit-center;
+    background-color: #fff;
+}
+
+/* us */
+
+li, p {
+    font-family: 'Thasadith', sans-serif;
+    font-size: 1.5rem;
+}
+
+li {
+    text-transform: uppercase; 
+    font-size: 1rem;  
+}
+
+.us ul {
+    list-style: none; 
+    padding-left: 0;
+}
+
+.us li {
+    border-bottom: 1px solid #D7D7D7; 
+    float: left; 
+    width: 100%; 
+    padding-top: 30px;
+    padding-bottom: 30px; 
+}
+
+/* about */
+
+.about {
+    background-image: linear-gradient(-225deg, #69EACB 0%, #EACCF8 48%, #6654F1 100%);
+    background-size: 100%;
+    padding-bottom: 30px;
+}
+
+/* contact form */
+
+.contact-form .form-group {
+   margin: 15px 5px;
+   padding-top: 30px; 
+   text-align: left;
+   font-family: 'Thasadith', sans-serif;
+}
+
+.contact-form .form-control {
+    border: 0;
+    border-radius: 0;
+    outline: 0;
+    border-bottom: 2px solid #E2E2E2;
+    padding-right: 150px;
+    font-family: 'Thasadith', sans-serif;
+    width: 75%;
+}
+
+.form-group button {
+    margin-top: 7px; 
+    padding: 15px;
+    width: 100%; 
+    background: #E2E2E2;
+    border: none;
+    font-family: 'Thasadith', sans-serif;
+    font-size: 13px; 
+    text-transform: uppercase; 
+}
+
+.contact-form label {
+    display: none; 
+}
+  
+/* COPYRIGHTS */
+
+#copyright-paragraph {
+   font-size: 17px; 
+   color:#6654F1;
+   opacity: 0.9; 
+   position: relative;
+   display: flex;
+   justify-content: center; 
+}
+
+/* Signup and login form */
+
+form {
+    border: 3px solid #f1f1f1;
+}
+  
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 25px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+  
+  /* Set a style for button */
+
+button {
+    background-color: #D1D693;
+    color: #6654F1;
+    padding: 10px 10px;
+    margin: 16px 0;
+    border: none;
+    cursor: pointer;
+    width: 25%;
+    position: center;
+    font-family: 'Thasadith', sans-serif;
+    font-size: 1em;
+}
+  
+/* Add a hover effect for button */
+
+button:hover {
+    opacity: 0.8;
+}
+  
+/* Add padding to container */
+
+.container {
+    width: 50%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* animation of logo */
+
+@keyframes blink {
+    100% {
+        opacity: 0;
+    }
+}
+  
