@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const path = require('path');
+const path = require('path'); // joins the specified paths into one
 const User = require('../models/User.js');
 const Role = require('../models/Role.js');
 const bcrypt = require('bcrypt'); // blowish crypter :) to encrypt/hash password

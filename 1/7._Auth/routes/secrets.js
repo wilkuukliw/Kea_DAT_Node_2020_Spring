@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const path = require('path');
 const nodemailer = require('nodemailer');
+const Swal = require('sweetalert2');
 const credentials = require("../config/emailCredentials");
 
 const User = require('../models/User.js');
@@ -73,8 +74,8 @@ router.post("/sendMail", async (req, res) => {
           if (error) {
              return console.log(error.message);
           }
-          return res.send({response : 'E-mail has been sent'})
         }); 
+        //on success - sweetalert 
     });
 
 module.exports = router;
