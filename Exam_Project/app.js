@@ -23,6 +23,16 @@ const authRoute = require('./routes/auth.js');
 const uploadRoute = require('./routes/upload.js');
 app.use(authRoute, uploadRoute);   // not sure if can all in one goal 
 
+// objection + knex
+
+const { Model } = require('objection');  // used to create an extra abstraction layer to make objects with. built on an SQL query builder - knex
+const Knex = require('knex');   //capital letter cause this is a library
+const knexFile = require('./knexfile.js')
+
+const knex = Knex(knexFile.development); // connection from knexfile
+
+Model.knex(knex); // objects now aware of the connection. built in method. 
+
 
 const PORT = 5000
 
