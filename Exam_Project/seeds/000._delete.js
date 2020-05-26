@@ -1,6 +1,6 @@
 exports.seed = function(knex) {
-    return knex('users', 'photos').del();
-}
-
-//not sure if can be deleted in one goal
-// knex - sql query builder
+  return knex('users').del()
+    .then(() => {
+      return knex('photos').del();
+    });
+};

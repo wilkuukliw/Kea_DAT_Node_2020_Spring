@@ -6,6 +6,14 @@ app.use(express.json());
 app.use(express.static('.'));  //configure express to integrate stylesheets into the app
 app.use(express.urlencoded({extended: false}));
 
+const session = require('express-session');  //keep track of users logged in and authorisation
+
+app.use(session({
+    secret: require('./config/mysqlCredentials.js').sessionSecret,  //  used to determine if the user is logged-in
+    resave: false,   //save to seession store?
+    saveUninitialized: true
+}));
+
 const fs = require('fs');
 
 const navbarPage = fs.readFileSync("public/navbar/navbar.html", "utf8");

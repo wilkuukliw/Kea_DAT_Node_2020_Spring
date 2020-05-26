@@ -7,6 +7,8 @@ const saltRounds = 12;
 //We need to now handle the POST request, basically what happens here is when the client enters their details in the login form and clicks the submit button, 
 //the form data will be sent to the server, and with that data our login script will check in our database's accounts table to see if the details are correct.
 
+
+
 router.get('/login', (req, res) => {
     return res.sendFile(path.join(__dirname, '../public/account/login.html'));
 });

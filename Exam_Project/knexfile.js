@@ -1,20 +1,17 @@
-// knex used for data migrations - sql query builder
+//Knex is used for data migration
 
 const credentials = require("./config/mysqlCredentials");
 const { knexSnakeCaseMappers } = require('objection');
 
-
 module.exports = {
 
-    development: {
-        client: 'mysql',
-        connection: {
-            database: credentials.database,
-            user: credentials.user,
-            password: credentials.password
-        },
-
-        ...knexSnakeCaseMappers()
-    }
-
-}
+  development: {
+    client: 'mysql',
+    connection: {
+      database: credentials.database,
+      user:     credentials.user,
+      password: credentials.password
+    },
+    ...knexSnakeCaseMappers()
+  }
+};
