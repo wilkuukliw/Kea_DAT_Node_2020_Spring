@@ -1,41 +1,36 @@
-let fileValid = false;
+const fs = require("fs");
 
-function validateForm() {
-    const title = document.forms.photoupload.title.value;
-    const description = document.forms.photoupload.description.value;
-    
+const db = require("../models");
+const Image = db.images;
 
-    if (title.length < 8 || title.length > 64) {
-        return false;
+const uploadFiles = async (req, res) => {
+  try {
+    console.log(req.file);
+
+    if (req.file == undefined) {
+      return res.send(`You must select a file.`);
     }
 
-    if(decription.length > 2048){
-        return false;
-    }
-    return true && fileValid;;
-}
+    Image.create({
+      type: req.file.mimetype,
+      image: req.file.originalname,
+      data: fs.readFileSync(
+        __basedir + "/uploads/" + req.file.filename
+      ),
+    }).then((image) => {
+      fs.writeFileSync(
+        __basedir + "/tmp/" + image.name,
+        image.data
+      );
 
+      return res.send(`File has been uploaded.`);
+    });
+  } catch (error) {
+    console.log(error);
+    return res.send(`Error when trying upload images: ${error}`);
+  }
+};
 
-function handleFileUpload(files){
-    const file = files[0];
-
-    const mimeTypeArray = file.type.split("/");
-
-
-    if(mimeTypeArray[0] !== "photo") {
-        fileValid = false;
-        return;
-    }
-
-    const fileSize = file.size;
-
-    const twoGBFileLimit = 2147483648;
-    
-    if(fileSize > twoGBFileLimit) {
-        fileValid = false;
-        return;
-    }
-    fileValid = true;
-}
-
-module.exports = router;
+module.exports = {
+  uploadFiles,
+};
