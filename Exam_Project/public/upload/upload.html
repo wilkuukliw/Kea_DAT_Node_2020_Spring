@@ -1,8 +1,6 @@
 <script src="/upload.js"></script>
 <div class="upload">
-  <div class="row">
-    <div class="col-sm-8 mt-3">
-      <h4>Share your image!</h4>
+      <a>Share your image!</a>
 
       <form
         class="mt-4"
@@ -23,12 +21,15 @@
     </div>
   </div>
   <hr />
-  <div class="row">
-    <div class="col-sm-12">
       <div class="preview-images"></div>
     </div>
   </div>
 </div>
+
+<div class="floating-btn-chat">
+  <a class="floating-btn-chat" href="/chat">chat</a>
+</div>
+
 <script>
   $(document).ready(function() {
     let imagesPreview = function(input, placeToInsertImagePreview) {
@@ -50,6 +51,7 @@
     });
   });
 
+//  TODO <--! succes not whenever button clicked but when succes and then page reload TO GALLERY or sth !-->
   $('#submitAlert').click(function() {
             Swal.fire({
               title: 'Success!',

@@ -16,7 +16,7 @@ const storage = multer.diskStorage({
     if (file.mimetype.startsWith("image")) {
       cb(null, true);
     } else {
-      cb("Please upload only images.", false);
+      cb(res.send({ response: "Please upload only images" }), false);
     }
   }
 });
@@ -29,7 +29,7 @@ router.post("/upload", upload.single('image'), (req, res) => {
     console.log(req.file);
 
     if (req.file == undefined) {
-      return res.send(`You must select a file.`);
+      return res.send({response: "Please select a file"});
     }
 
     Image.create({
@@ -44,11 +44,11 @@ router.post("/upload", upload.single('image'), (req, res) => {
         image.data
       );
 
-      return res.send(`File has been uploaded.`);
+      return res.send({ response: "Image has been added to the gallery" });   //todo: try to implement sweetalert correctly 
     });
   } catch (error) {
     console.log(error);
-    return res.send(`Error when trying upload images: ${error}`);
+    return res.send({ response:`Error when trying upload image: ${error}`});
   }
 });
 

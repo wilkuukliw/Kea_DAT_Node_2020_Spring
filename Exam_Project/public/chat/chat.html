@@ -5,13 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat</title>
+
+    <link rel="stylesheet" type="text/css" href="public/global.css">
+    <link href="https://fonts.googleapis.com/css2?family=Faster+One&family=Thasadith&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.slim.js" integrity="sha256-Dul4c09cdrWKXVtallPxF558lwxMwCC8dXJdZ0PVW54=" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h2>Ask us a question</h2>
-    <input id="thoughts" placeholder="write" />
-    <button id="btn-submit" onclick="onThoughtsSubmitted()">Post</button>
+    <a>Ask us a question</a>
+    <input id="thoughts" placeholder="write something ;>" />
+    <button onclick="onThoughtsSubmitted()">Post</button>
 
     <div id="messages"></div>
     <script>
