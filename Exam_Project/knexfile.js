@@ -1,3 +1,4 @@
+
 //Knex is used for data migration
 
 const credentials = require("./config/mysqlCredentials");

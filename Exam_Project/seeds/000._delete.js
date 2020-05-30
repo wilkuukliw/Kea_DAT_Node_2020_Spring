@@ -1,6 +1,6 @@
 exports.seed = function(knex) {
   return knex('users').del()
     .then(() => {
-      return knex('photos').del();
+      return knex('images').del();
     });
 };
