@@ -18,7 +18,7 @@
             class="form-control-file border"
           />
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button id="submitAlert" type="submit">Submit</button>
       </form>
     </div>
   </div>
@@ -59,47 +59,3 @@
             })
   });
 </script>
-
-<!-- <script src="/upload/upload.js"></script>
-<h1>Share your experience!</h1>
-<div class="upload">
-    <form action="/photos" method="POST" enctype="multipart/form-data" name="photo-upload" onsubmit="return validateForm()">
-        <textarea name="description" class="form-description" placeholder="description" rows="3"></textarea>
-        <label for="upload-photo"> Browse...</label>
-        <input type="file" name="photo" id="upload-photo" accept="photo/*" onchange="handleFileUpload(this.files)" />
-
-        <button id="submitAlert" type="submit">Submit</button>
-</form>
-
-
-<script>
-  
-  $(document).ready(function() {
-        let imagesPreview = function(input, placeToInsertImagePreview) {
-          if (input.files) {
-            let filesAmount = input.files.length;
-            for (i = 0; i < filesAmount; i++) {
-              let reader = new FileReader();
-              reader.onload = function(event) {
-                $($.parseHTML("<img>"))
-                  .attr("src", event.target.result)
-                  .appendTo(placeToInsertImagePreview);
-              };
-              reader.readAsDataURL(input.files[i]);
-            }
-          }
-        };
-        $("#input-files").on("change", function() {
-          imagesPreview(this, "div.preview-images");
-        });
-      });
-
-          $('#submitAlert').click(function() {
-            Swal.fire({
-              title: 'Success!',
-              text: 'Photo uploaded',
-              icon: 'success',
-              confirmButtonText: 'OK'
-            })
-  });
-  </script> -->

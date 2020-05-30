@@ -49,7 +49,7 @@ const fs = require('fs');
 const navbarPage = fs.readFileSync("public/navbar/navbar.html", "utf8");
 const indexPage = fs.readFileSync("public/index/index.html", "utf8");
 const footerPage = fs.readFileSync("public/footer/footer.html", "utf8");
-//const photosPage = fs.readFileSync("public/photos/photos.html", "utf8");
+const imagesPage = fs.readFileSync("public/images/images.html", "utf8");
 const uploadPage = fs.readFileSync("public/upload/upload.html", "utf8");
 const contactPage = fs.readFileSync("public/contact-form/sendMail.html", "utf8");
 const chatPage = fs.readFileSync("public/chat/chat.html", "utf8")
@@ -66,9 +66,9 @@ app.get("/sendMail", (req,res) => {
     return res.send(navbarPage + contactPage + footerPage);
 });
 
-// app.get("/photos", (req,res) => {
-//     return res.send(navbarPage + photosPage + footerPage);
-// });
+ app.get("/images", (req,res) => {
+     return res.send(navbarPage + imagesPage + footerPage);
+ });
 
 app.get("/chat", (req,res) => {
     return res.send(chatPage);
@@ -77,12 +77,12 @@ app.get("/chat", (req,res) => {
 const authRoute = require('./routes/auth.js');
 const uploadRoute = require('./routes/upload.js');
 const contactRoute = require('./routes/contact.js');
-//const photosRoute = require('./routes/photos.js');
+const imagesRoute = require('./routes/images.js');
 
 app.use(authRoute); 
 app.use(uploadRoute);
 app.use(contactRoute);
-//app.use(photosRoute);
+app.use(imagesRoute);
 
 // objection + knex
 
@@ -103,12 +103,3 @@ server.listen(PORT, (error) => {
     }
     console.log("Server is running on port ", PORT)
 });
-
-
-
-
-
-
-
-
-

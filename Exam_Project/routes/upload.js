@@ -1,7 +1,5 @@
 const router = require("express").Router();
 
-//const uploadController = require("../controllers/upload");
-
 const fs = require("fs");
 
 const db = require("../models");
@@ -10,38 +8,22 @@ const Image = db.images;
 
 const multer = require("multer");
 
-const imageFilter = (req, file, cb) => {
-  if (file.mimetype.startsWith("image")) {
-    cb(null, true);
-  } else {
-    cb("Please upload only images.", false);
-  }
-};
-
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, __basedir + "/uploads/");
+      cb(null, "images/");
   },
-  filename: (req, file, cb) => {
-    cb(null, `${Date.now()}${file.originalname}`);
-  },
+  filename: (req, file, cb) => {   // checking if this is video or not
+    if (file.mimetype.startsWith("image")) {
+      cb(null, true);
+    } else {
+      cb("Please upload only images.", false);
+    }
+  }
 });
 
 const upload = multer({ storage: storage });
 
-
-
-router.get("/images", (req,res) => {
-  return res.send({response: images});
-});
-
-
-
 router.post("/upload", upload.single('image'), (req, res) => {
-
-
-   //todo 1.server side validate  
-
 
    try {
     console.log(req.file);
