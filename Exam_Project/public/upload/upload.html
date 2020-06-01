@@ -16,7 +16,7 @@
             class="form-control-file border"
           />
         </div>
-        <button id="submitAlert" type="submit">Submit</button>
+        <button type="submit">Submit</button>
       </form>
     </div>
   </div>
@@ -51,13 +51,4 @@
     });
   });
 
-//  TODO <--! succes not whenever button clicked but when succes and then page reload TO GALLERY or sth !-->
-  $('#submitAlert').click(function() {
-            Swal.fire({
-              title: 'Success!',
-              text: 'Photo uploaded',
-              icon: 'success',
-              confirmButtonText: 'OK'
-            })
-  });
 </script>

@@ -1,27 +1,37 @@
 const router = require("express").Router();
 
+
 const fs = require("fs");
 
 const db = require("../models");
 const Image = db.images;
 
-
 const multer = require("multer");
+
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-      cb(null, "images/");
+      cb(null, __basedir + "/uploads/");
   },
   filename: (req, file, cb) => {   // checking if this is video or not
     if (file.mimetype.startsWith("image")) {
-      cb(null, true);
+      cb(null, `${Date.now()}${file.originalname}`);
     } else {
-      cb(res.send({ response: "Please upload only images" }), false);
+      cb("Please upload only images");
     }
   }
 });
 
+
 const upload = multer({ storage: storage });
+
+
+
+router.get("/images", (req,res) => {
+  return res.send({response: images});
+});
+
+
 
 router.post("/upload", upload.single('image'), (req, res) => {
 
@@ -29,7 +39,7 @@ router.post("/upload", upload.single('image'), (req, res) => {
     console.log(req.file);
 
     if (req.file == undefined) {
-      return res.send({response: "Please select a file"});
+      return res.send(`You must select a file.`);
     }
 
     Image.create({
@@ -44,12 +54,12 @@ router.post("/upload", upload.single('image'), (req, res) => {
         image.data
       );
 
-      return res.send({ response: "Image has been added to the gallery" });   //todo: try to implement sweetalert correctly 
+      return res.send(`File has been uploaded.`);
     });
   } catch (error) {
     console.log(error);
-    return res.send({ response:`Error when trying upload image: ${error}`});
+    return res.send(`Error when trying upload images: ${error}`);
   }
 });
 
-module.exports = router;
+module.exports = router; 
