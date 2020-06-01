@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
     if (file.mimetype.startsWith("image")) {
       cb(null, `${Date.now()}${file.originalname}`);
     } else {
-      cb("Please upload only images");
+      cb(res.status(400).send({ response: `Please upload only images` }), false);
     }
   }
 });
@@ -39,7 +39,7 @@ router.post("/upload", upload.single('image'), (req, res) => {
     console.log(req.file);
 
     if (req.file == undefined) {
-      return res.send(`You must select a file.`);
+      return res.status(400).send({response: `Please select a file`});
     }
 
     Image.create({
@@ -54,11 +54,11 @@ router.post("/upload", upload.single('image'), (req, res) => {
         image.data
       );
 
-      return res.send(`File has been uploaded.`);
+      return res.send({ response: `Image has been added to the gallery` });
     });
   } catch (error) {
     console.log(error);
-    return res.send(`Error when trying upload images: ${error}`);
+    return res.status(500).send({ response:`Error when trying upload image: ${error}`});
   }
 });
 
