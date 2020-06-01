@@ -74,6 +74,8 @@ app.get("/chat", (req,res) => {
     return res.send(chatPage);
 });
 
+
+
 const authRoute = require('./routes/auth.js');
 const uploadRoute = require('./routes/upload.js');
 const contactRoute = require('./routes/contact.js');

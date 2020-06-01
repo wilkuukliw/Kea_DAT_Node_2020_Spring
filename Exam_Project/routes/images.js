@@ -1,11 +1,9 @@
-const router = require('express').Router();
+const router = require("express").Router();
+const path = require('path'); // joins the specified paths into one
+const Image = require('../models/Image.js');
 
-router.get("/images", (req,res) => {
-    return res.send({response: images});
-  });
-  
+
+//   // Retrieve all images
+//   router.get("/images", images.findAll);
+
   module.exports = router;
-
-
-
-  //todo: retrieve images from database

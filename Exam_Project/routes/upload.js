@@ -1,12 +1,17 @@
 const router = require("express").Router();
 
-
 const fs = require("fs");
 
-const db = require("../models");
-const Image = db.images;
+const Image = require('../models/Image.js');
+
 
 const multer = require("multer");
+const objection = require("objection");
+const Model = objection.Model;
+const Knex = require("knex"); 
+const knexConfig = require("../knexfile.js");
+const knex = Knex(knexConfig.development);
+Model.knex(knex);
 
 
 const storage = multer.diskStorage({
@@ -25,32 +30,23 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-
-
-router.get("/images", (req,res) => {
-  return res.send({response: images});
-});
-
-
-
+ 
 router.post("/upload", upload.single('image'), (req, res) => {
 
+
    try {
-    console.log(req.file);
+    console.log(req.body);
 
     if (req.file == undefined) {
       return res.status(400).send({response: `Please select a file`});
     }
 
-    Image.create({
-      type: req.file.mimetype,
-      image: req.file.originalname,
-      data: fs.readFileSync(
-        __basedir + "/uploads/" + req.file.filename
-      ),
+    Image.query().insert({
+      title: req.file.originalname,
+      
     }).then((image) => {
       fs.writeFileSync(
-        __basedir + "/tmp/" + image.name,
+        __basedir + "/tmp/" + image.title,
         image.data
       );
 
@@ -61,5 +57,25 @@ router.post("/upload", upload.single('image'), (req, res) => {
     return res.status(500).send({ response:`Error when trying upload image: ${error}`});
   }
 });
+
+
+// router.get("/get-images", function(req, res) {
+//   let response = {};
+
+//   db.Image.query().select()
+//   .then(images => {
+//       response.status = 200;
+//       response.images = images;
+
+//       res.send(response);
+//   }).catch(err => {
+//       response.status = 500;
+//       response.errorMessage = "Error querying the database. Might be because the login credentials or wrong or that the database isn't running.";
+
+//       res.send(response);
+//   });
+
+// });
+
 
 module.exports = router; 

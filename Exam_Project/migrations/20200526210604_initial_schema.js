@@ -15,7 +15,7 @@ exports.up = function(knex) {
 
         .createTable('images', (table) => {
             table.increments('id').notNullable();
-            table.binary('image').notNullable();
+            table.binary('title').notNullable();
             table.dateTime('updated_at').defaultTo(knex.raw('NULL ON UPDATE CURRENT_TIMESTAMP'));
             table.dateTime('created_at').notNullable().defaultTo(knex.raw('CURRENT_TIMESTAMP'));
         });
