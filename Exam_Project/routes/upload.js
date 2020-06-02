@@ -18,7 +18,7 @@ const storage = multer.diskStorage({
   destination: (req, file, cb) => {
       cb(null, __basedir + "/uploads/");
   },
-  filename: (req, file, cb) => {   // checking if this is video or not
+  filename: (req, file, cb) => {   // checking if this is image or not
     if (file.mimetype.startsWith("image")) {
       cb(null, `${Date.now()}${file.originalname}`);
     } else {
@@ -33,9 +33,8 @@ const upload = multer({ storage: storage });
  
 router.post("/upload", upload.single('image'), (req, res) => {
 
-
+  
    try {
-    console.log(req.body);
 
     if (req.file == undefined) {
       return res.status(400).send({response: `Please select a file`});
@@ -49,7 +48,7 @@ router.post("/upload", upload.single('image'), (req, res) => {
         __basedir + "/tmp/" + image.title,
         image.data
       );
-
+      console.log(req.file);
       return res.send({ response: `Image has been added to the gallery` });
     });
   } catch (error) {
@@ -57,25 +56,6 @@ router.post("/upload", upload.single('image'), (req, res) => {
     return res.status(500).send({ response:`Error when trying upload image: ${error}`});
   }
 });
-
-
-// router.get("/get-images", function(req, res) {
-//   let response = {};
-
-//   db.Image.query().select()
-//   .then(images => {
-//       response.status = 200;
-//       response.images = images;
-
-//       res.send(response);
-//   }).catch(err => {
-//       response.status = 500;
-//       response.errorMessage = "Error querying the database. Might be because the login credentials or wrong or that the database isn't running.";
-
-//       res.send(response);
-//   });
-
-// });
 
 
 module.exports = router; 

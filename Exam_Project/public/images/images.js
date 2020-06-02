@@ -1,34 +1,30 @@
-// $( document ).ready( () => {
-	
-// 	var url = window.location;
-	
-// 	// GET REQUEST
-// 	$("#btnGetFiles").click( (event) => {
-// 		event.preventDefault();
-// 		ajaxGet();
-// 	});
-	
-// 	// DO GET
-// 	function ajaxGet(){
-// 		$.ajax({
-// 			type : "GET",
-// 			url : "/uploads/getall",
-// 			success: (data) => {
-// 				//clear old data
-// 				$("#listFiles").html("");
-				
-// 				/*
-// 					render list of files
-// 				*/
-// 				$("#listFiles").append('<ul>');
-// 				$.each(data, (index, file) => {
-// 					$("#listFiles").append('<li><a href=' + url + 'api/files/' + file.id +'>' + file.name + '</a></li>');
-// 				});
-// 				$("#listFiles").append('</ul>');
-// 			},
-// 			error : (err) => {
-// 				$("#listFiles").html(err.responseText);
-// 			}
-// 		});	
-// 	}
-// })
+
+
+// $.get(`images${location.search}`, (data) => {
+//     data.response.map((image) => {
+//         $("#image-gallery")
+//             .append(`<a href="gallery/${image.fileName}">${image.title}</a>`);
+//     });
+// });
+
+// const url = window.location.href;
+// let videoId = url.substr(url.lastIndexOf("/") + 1);
+
+// $.get(`/images/${imageId}`)
+//     .done((data) => {
+//         console.log(data.response);
+
+//         $("#title").text(data.response.title);
+
+//         const gallery = `<image id="gallery" controls>
+//                     <source src="/${imageId}" >
+//                     Your browser does not support the image tag.
+//                 </image>`;
+
+//         $("#gallery").append(gallery);
+
+//     })
+//     .catch((error) => {
+//         console.log(error);
+//         $("#title").text("Could not find image");
+//     });

@@ -34,6 +34,7 @@ io.on('connection', socket => {
 
 app.use(express.json());
 app.use(express.static('.'));  //configure express to integrate stylesheets into the app
+app.use('/uploads', express.static('uploads'));
 app.use(express.urlencoded({extended: false}));
 
 const session = require('express-session');  //keep track of users logged in and authorisation
@@ -52,7 +53,7 @@ const footerPage = fs.readFileSync("public/footer/footer.html", "utf8");
 const imagesPage = fs.readFileSync("public/images/images.html", "utf8");
 const uploadPage = fs.readFileSync("public/upload/upload.html", "utf8");
 const contactPage = fs.readFileSync("public/contact-form/sendMail.html", "utf8");
-const chatPage = fs.readFileSync("public/chat/chat.html", "utf8")
+const chatPage = fs.readFileSync("public/chat/chat.html", "utf8");
 
 app.get("/", (req,res) => {
     return res.send(navbarPage + indexPage + footerPage);
@@ -73,7 +74,6 @@ app.get("/sendMail", (req,res) => {
 app.get("/chat", (req,res) => {
     return res.send(chatPage);
 });
-
 
 
 const authRoute = require('./routes/auth.js');
