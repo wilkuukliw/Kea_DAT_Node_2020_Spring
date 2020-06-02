@@ -11,7 +11,7 @@ const storage = multer.diskStorage({
     if (file.mimetype.startsWith("image")) {
       cb(null, `${Date.now()}${file.originalname}`);
     } else {
-      cb(res.status(400).send({ response: `Please upload only images` }), false);
+      cb(res.status(400).send({ response: "Please upload only images" }), false);
     }
   }
 });
@@ -23,19 +23,15 @@ router.post("/upload", upload.single('image'), (req, res) => {
    try {
 
     if (req.file == undefined) {
-      return res.status(400).send({response: `Please select a file`});
+      return res.status(400).send({response: "Please select a file"});
     }
 
     Image.query().insert({
       title: req.file.originalname,
       
-    }).then((image) => {
-      fs.writeFileSync(
-        __basedir + "/tmp/" + image.title,
-        image.data
-      );
+     }).then((image) => {
       console.log(req.file);
-      return res.send({ response: `Image has been added to the gallery` });
+      return res.send({ response: "Image has been added to the gallery" });
     });
   } catch (error) {
     console.log(error);
