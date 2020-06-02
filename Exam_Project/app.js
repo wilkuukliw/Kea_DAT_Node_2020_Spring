@@ -79,12 +79,10 @@ app.get("/chat", (req,res) => {
 const authRoute = require('./routes/auth.js');
 const uploadRoute = require('./routes/upload.js');
 const contactRoute = require('./routes/contact.js');
-const imagesRoute = require('./routes/images.js');
 
 app.use(authRoute); 
 app.use(uploadRoute);
 app.use(contactRoute);
-app.use(imagesRoute);
 
 // objection + knex
 
