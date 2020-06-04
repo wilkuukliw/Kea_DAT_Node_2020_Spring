@@ -3,4 +3,4 @@ module.exports = {
     user: 'root',
     password: 'password',
     sessionSecret: 'some session secret'
-};
+}

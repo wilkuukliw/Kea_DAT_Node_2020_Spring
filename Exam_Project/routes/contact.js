@@ -40,7 +40,8 @@ router.post("/sendMail", async (req, res) => {
              return console.log(error.message);
           }
         }); 
-        //on success - sweetalert 
+        
+        //on success - there is sweetalert implemented
     });
 
 module.exports = router;

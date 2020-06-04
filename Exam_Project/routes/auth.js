@@ -2,12 +2,10 @@ const router = require("express").Router();
 const path = require('path'); // joins the specified paths into one
 const User = require('../models/User.js');
 const bcrypt = require('bcrypt'); // blowish crypter :) to encrypt/hash password
-const saltRounds = 12;  
+const saltRounds = 12;  //The cost factor controls how much time is needed to calculate a single BCrypt hash.
 
 //We need to now handle the POST request, basically what happens here is when the client enters their details in the login form and clicks the submit button, 
 //the form data will be sent to the server, and with that data our login script will check in our database's accounts table to see if the details are correct.
-
-
 
 router.get('/login', (req, res) => {
     return res.sendFile(path.join(__dirname, '../public/account/login.html'));
@@ -32,7 +30,6 @@ router.post('/login', async (req, res) => {
     } catch(error) {
         return res.status(500).send({ response: "Something went wrong with the database" });
     }
-
     return res.status(400).send({ response: "Incorrect password" });
 });
 
@@ -45,27 +42,23 @@ router.get('/signup', (req, res) => {
 
 router.post("/signup", async (req, res) => {   // async (promise)
  
-    // fields required: username, password, repeat password
+    // fields required
     const { username, password, passwordRepeat } = req.body;
 
     const isPasswordTheSame = password == passwordRepeat;
 
     if (username && password && isPasswordTheSame) {
-        // password requirements
         if (password.length < 8) {
             return res.status(400).send({ response: "Password does not fulfill the requirements" });
         } else {
             try {
-                
                 const userFound = await User.query().select().where({ 'username': username }).limit(1);
                 if (userFound.length > 0) {
                     return res.status(400).send({ response: "User already exists" });
             } else {
 
                 const hashedPassword = await bcrypt.hash(password, saltRounds);
-                
                 const createdUser = await User.query().insert({
-
                     username,
                     password: hashedPassword,
                 });
