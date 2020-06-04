@@ -54,25 +54,42 @@ const imagesPage = fs.readFileSync("public/images/images.html", "utf8");
 const uploadPage = fs.readFileSync("public/upload/upload.html", "utf8");
 const contactPage = fs.readFileSync("public/contact-form/sendMail.html", "utf8");
 const chatPage = fs.readFileSync("public/chat/chat.html", "utf8");
+const weatherPage = fs.readFileSync("public/weather-api/weather.html", "utf8")
 
 app.get("/", (req,res) => {
     return res.send(navbarPage + indexPage + footerPage);
 });
 
 app.get("/upload", (req,res) => {
-    return res.send(navbarPage + uploadPage + footerPage);
+    if(req.session.user) {
+        return res.send(navbarPage + uploadPage + footerPage);
+    } else {
+        return res.redirect('/login');
+    }
 });
 
 app.get("/sendMail", (req,res) => {
-    return res.send(navbarPage + contactPage + footerPage);
+    if(req.session.user) {
+        return res.send(navbarPage + contactPage + footerPage);
+    } else {
+        return res.redirect('/login');
+    }
 });
 
- app.get("/images", (req,res) => {
-     return res.send(navbarPage + imagesPage + footerPage);
+app.get("/images", (req,res) => {
+    if(req.session.user) {
+        return res.send(navbarPage + imagesPage + footerPage);
+    } else {
+        return res.redirect('/login');
+    }
  });
 
 app.get("/chat", (req,res) => {
     return res.send(chatPage);
+});
+
+app.get("/weather", (req,res) => {
+    return res.send(weatherPage);
 });
 
 

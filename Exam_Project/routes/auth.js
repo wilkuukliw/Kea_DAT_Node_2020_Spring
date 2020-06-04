@@ -62,14 +62,12 @@ router.post("/signup", async (req, res) => {   // async (promise)
                     return res.status(400).send({ response: "User already exists" });
             } else {
 
-
                 const hashedPassword = await bcrypt.hash(password, saltRounds);
                 
                 const createdUser = await User.query().insert({
 
                     username,
                     password: hashedPassword,
-                
                 });
 
                 return res.send({ response: `User has been created with the username ${createdUser.username} You can now log in` });
