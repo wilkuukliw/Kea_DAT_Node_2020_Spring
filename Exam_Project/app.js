@@ -87,14 +87,19 @@ Model.knex(knex); // objects now aware of the connection. built in method.
 
 io.on('connection', socket => { 
     console.log("Socket joined", socket.id);
-    
-socket.on( ({ talk }) => {        
-    io.emit({ talk: escape(talk) });  // sends out to all the present clients
+
+
+   socket.on("I'm thinking about this", ({ talk }) => {
+       // sends out to all the clients
+         io.emit("Someone said", { talk });
+
+        }); 
+
+         socket.on('disconnect', () => {
+         console.log("Socket left", socket.id);
     });
-     socket.on('disconnect', () => {
-        console.log("Socket left", socket.id);
-    }); 
 });
+
 
 const PORT = 5002
 

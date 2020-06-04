@@ -8,9 +8,7 @@
     <link rel="stylesheet" type="text/css" href="public/global.css">
     <link href="https://fonts.googleapis.com/css2?family=Faster+One&family=Thasadith&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.slim.js" integrity="sha256-Dul4c09cdrWKXVtallPxF558lwxMwCC8dXJdZ0PVW54=" crossorigin="anonymous"></script>   
-     <script src="public/chat/chat.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.slim.js" integrity="sha256-Dul4c09cdrWKXVtallPxF558lwxMwCC8dXJdZ0PVW54=" crossorigin="anonymous"></script>
 </head>
 <body>
     <a>Ask us a question</a>
@@ -24,10 +22,10 @@
         function onTalkSubmitted() {
             const talk = $('#talk').val();
             $('#talk').val("");
-            socket.emit( { talk } );
+            socket.emit("I'm thinking about this", { talk } );
         }
 
-        socket.on(data => {
+        socket.on("Someone said", data => {
             $('#messages').prepend(`<div>${data.talk}</div>`);
         });
 
