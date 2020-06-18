@@ -1,3 +1,4 @@
+<script src="/upload/upload.js"></script>
 <div class="upload">
       <a>Share your image!</a>
 
@@ -11,10 +12,12 @@
           <input
             type="file"
             name="image"
+            accept="image/*" onchange="handleFileUpload(this.files)"
             id="input-files"
             class="form-control-file border"
           />
         </div>
+
         <button type="submit">Submit</button>
       </form>
     </div>
@@ -32,19 +35,27 @@
 <script>
   $(document).ready(function() {
     let imagesPreview = function(input, placeToInsertImagePreview) {
+
       if (input.files) {
+        
         let filesAmount = input.files.length;
+
         for (i = 0; i < filesAmount; i++) {
+
           let reader = new FileReader();
+
           reader.onload = function(event) {
+
             $($.parseHTML("<img>"))
               .attr("src", event.target.result)
               .appendTo(placeToInsertImagePreview);
           };
-          reader.readAsDataURL(input.files[i]);
+
+          reader.readAsDataURL(input.files[i]);  //read the contents of the specified Blob or File. When the read operation is finished, the readyState becomes DONE, and the loadend is triggered. At that time, the result attribute contains the data as a data: URL representing the file's data as a base64 encoded string.
         }
       }
     };
+
     $("#input-files").on("change", function() {
       imagesPreview(this, "div.preview-images");
     });

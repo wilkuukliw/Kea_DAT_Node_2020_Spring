@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const path = require('path');
+const path = require('path');  //provides utilities for working with file and directory paths. 
 const nodemailer = require('nodemailer');
 const credentials = require("../config/emailCredentials");
 

@@ -1,4 +1,4 @@
-const { Model } = require('objection');  // objection is ORM that connect relational data in db to objects in js
+const { Model } = require('objection'); 
 
 class User extends Model {
 

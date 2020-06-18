@@ -1,6 +1,3 @@
-
-//Knex is used for data migration
-
 const credentials = require("./config/mysqlCredentials");
 const { knexSnakeCaseMappers } = require('objection');
 
@@ -13,6 +10,6 @@ module.exports = {
       user:     credentials.user,
       password: credentials.password
     },
-    ...knexSnakeCaseMappers()
+    ...knexSnakeCaseMappers()         
   }
 };

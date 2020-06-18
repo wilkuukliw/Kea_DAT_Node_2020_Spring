@@ -3,10 +3,11 @@ const Image = require('../models/Image.js');
 const multer = require("multer");
 
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-      cb(null, __basedir + "/uploads/");
+    destination: (req, file, cb) => {   // Indicates where you want to save your files
+      cb(null, "uploads/");
   },
-  filename: (req, file, cb) => {   // checking if this is image or not
+
+  filename: (req, file, cb) => {   //Indicates how you want your files named. 
     if (file.mimetype.startsWith("image")) {
       cb(null, `${Date.now()}${file.originalname}`);
     } else {
@@ -17,7 +18,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-router.post("/upload", upload.single('image'), (req, res) => {
+router.post("/upload", upload.single('image'), (req, res) => {   //When an image is received by the route, it will be automatically saved by multer to the directory you previously specified. The upload.single call is handled by the multer middleware.
 
    try {
 
@@ -30,7 +31,8 @@ router.post("/upload", upload.single('image'), (req, res) => {
       
      }).then(() => {
       console.log(req.file);
-      return res.send({ response: "Image has been added to the gallery" });
+      return res.redirect('/images');
+   
     });
   } catch (error) {
     console.log(error);

@@ -1,5 +1,15 @@
-#copyright-paragraph {
-    font-size: 0.8em;
+  /* Navbar */
+
+a, h1 {
+    font-family: 'Thasadith', sans-serif;
+    font-weight: 700; 
+    color: #000000 !important; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    text-decoration: none;
+    display: block;
+    padding: 0.5rem 1rem;
+    padding-left: 0.5rem;
 }
 
 ul {
@@ -21,31 +31,19 @@ nav ul li, .image-gal ul li {
     padding: 0 10px;
 }
 
-.gal-item {
-	height: 500x;
-	margin: 25px;
-	display: flex;
-	justify-content: center;
-    align-items: center;
+
+
+ /* Logo */
+
+ .logo .logo-1, .logo .logo-2, .logo .logo-3, .logo .logo-4 {
+    width: 140px 
 }
 
-.weather-header {
-    letter-spacing: 2px;
-    padding: 0.5rem 1rem;
-    font-weight: bolder;
+.logo-4 {
+    margin-left: 15px;
 }
 
-a, h1 {
-    font-family: 'Thasadith', sans-serif;
-    font-weight: 700; 
-    color: #000000 !important; 
-    text-transform: uppercase; 
-    letter-spacing: 2px; 
-    text-decoration: none;
-    display: block;
-    padding: 0.5rem 1rem;
-    padding-left: 0.5rem;
-}
+  /* Main body */
 
 body {
     background-image: linear-gradient(to top, #fddb92 0%, #d1fdff 100%);
@@ -58,38 +56,6 @@ body {
     color: #212529;
     text-align: -webkit-center;
 }
-
-.logo .logo-1, .logo .logo-2, .logo .logo-3, .logo .logo-4 {
-    width: 140px 
-}
-
-.logo-4 {
-    margin-left: 15px;
-}
-
-button {
-    background-color: #D1D693;
-    padding: 10px 10px;
-    margin: 16px 0;
-    border: none;
-    cursor: pointer;
-    width: 15%;
-    position: center;
-    font-family: 'Thasadith', sans-serif;
-    font-size: 1em;
-}
-  
-/* Add a hover effect for button */
-
-button:hover {
-    opacity: 0.8;
-}
-
-.container {
-	margin-top: 80px;
-    display: flex;
-}
-
 
 section.right, section.left {
 	display: inline-block;
@@ -119,39 +85,32 @@ section.right p {
 	width: 75%;
 }
 
+button {
+    background-color: #D1D693;
+    padding: 10px 10px;
+    margin: 16px 0;
+    border: none;
+    cursor: pointer;
+    width: 15%;
+    position: center;
+    font-family: 'Thasadith', sans-serif;
+    font-size: 1em;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.container {
+	margin-top: 80px;
+    display: flex;
+}
+
+
+/* Upload */
+
 form {
     display: block;
-}
-
-.form-title, .form-description {
-    margin: 25px 25px;
-    padding-top: 10px; 
-    padding-bottom: 10px;
-    text-align: left;
-    border: 0;
-    border-radius: 0;
-    outline: 0;
-    border-bottom: 2px solid #E2E2E2;
-    padding-right: 150px;
-    font-family: 'Thasadith', sans-serif;
-    width: 45%;
-    display: block;
-}
-
-label {
-    cursor: pointer;
-    -webkit-appearance: none;
-    background: linear-gradient(to top, #FFF, #DDD);
-    border: none;
-    border-radius: .25em;
-    box-shadow: inset .25em .25em .25em rgba(255,255,255, .5), inset -.1em -.1em .1em rgba(0,0,0, 0.1);
-    padding: .65em;
-    margin-right: 10px;
-    width: 0%;
-}
-
-label:hover {
-    opacity: 0.7;
 }
 
 #upload-photo {
@@ -160,6 +119,8 @@ label:hover {
     z-index: -1;
     visibility: hidden;
 }
+
+  /* Chat */
 
 .floating-btn-chat {
     background-color: #AFC7D0;
@@ -181,12 +142,7 @@ label:hover {
     background-color: pink;
 }
 
-footer {
-    margin-bottom: 200px;
-    height: 200px;
-    width: 100%;
-    position: relative;
-}
+  /* Contact form */
 
 .form-group {
     margin: 15px 5px;
@@ -199,6 +155,19 @@ footer {
      font-family: 'Thasadith', sans-serif;
      width: 100%;
  }
+
+  /* Footer */
+
+footer {
+    margin-bottom: 200px;
+    height: 200px;
+    width: 100%;
+    position: relative;
+}
+
+ #copyright-paragraph {
+    font-size: 0.8em;
+}
 
  /* Signup and login form */
 
@@ -220,6 +189,22 @@ input[type=text], input[type=password] {
 .account-container label {
     visibility: hidden;
 
+}
+
+  /* Weather */
+
+  .gal-item {
+	height: 500x;
+	margin: 25px;
+	display: flex;
+	justify-content: center;
+    align-items: center;
+}
+
+.weather-header {
+    letter-spacing: 2px;
+    padding: 0.5rem 1rem;
+    font-weight: bolder;
 }
 
 @keyframes buttonAnimation {
