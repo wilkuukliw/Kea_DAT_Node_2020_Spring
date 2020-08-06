@@ -1,7 +1,8 @@
 body {
     background: url('../img/sad-doggo.jpg');
     background-size: cover;
-    min-height: 100vh; 
+    height: 100%;
+    background-repeat: no-repeat;
 }
 
 input[type=text] {
@@ -17,7 +18,8 @@ input[type=text] {
     padding-right: 850px;
     padding-left: 15px;
     margin-right: auto;
-    margin-left: auto;
+    margin-left: 15px;
+    margin-top: 100px;
 }
 
 .application-container label {
@@ -33,7 +35,7 @@ input[type=text] {
     padding: 0 40px;
     background-color: wheat;
     cursor: pointer;
-    margin-left: 88px;
+    margin-left: 96px;
     margin-top: 30px;
 }
 

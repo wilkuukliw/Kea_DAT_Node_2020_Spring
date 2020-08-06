@@ -1,15 +1,20 @@
 const express = require('express');
 const app = express();
-const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const escape = require('escape-html');
 app.use(express.static('public'))
 app.use(express.static('.'));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false })); 
-app.use(bodyParser.json());
 app.use(helmet()); 
+const session = require('express-session');  
 
+app.use(session({
+    secret: require('./config/mysqlCred.js').sessionSecret,  
+    resave: false,  
+    saveUninitialized: true
+}));
 
 app.get("/", (req,res) => {
     return res.sendFile(__dirname + "/public/index/index.html")
@@ -23,13 +28,17 @@ app.get("/breeds", (req,res) => {
     return res.sendFile(__dirname + "/public/breeds/breeds-api.html")
 });
 
+app.get("/about", (req,res) =>{
+    return res.sendFile(__dirname + "/public/about.html")
+});
+
 /* knex and objection */
 
 const { Model } = require('objection');  // used to create an extra abstraction layer to make objects with. built on an SQL query builder - knex
-const Knex = require('knex');     // with capital cause this is a library
+const Knex = require('knex');    
 const knexFile = require('./knexfile.js');
 
-const knex = Knex(knexFile.development);    // and this is a connection from the knexfile - in lower case
+const knex = Knex(knexFile.development);    // connection from the knexfile
 
 Model.knex(knex);  // build in method - objects now are aware of the connection 
 
@@ -39,7 +48,7 @@ const server = require('http').createServer(app);   // creating an HTTP server y
 
 const io = require('socket.io')(server);  // pass server to io library
 
-io.on('connection', socket => {    //initialize connection, this callback contains info about specific client
+io.on('connection', socket => {    // initialize connection, this callback contains info about specific client
 
    socket.on("Listen to the client!", ({ talk }) => {
        
@@ -49,15 +58,23 @@ io.on('connection', socket => {    //initialize connection, this callback contai
 });
 
 
-// setup route with our server instance
+// setup route with server instance
 const applicationRoute = require("./routes/application.js");    
 app.use(applicationRoute);   // REST for the application model
 
 const doggoRoute = require("./routes/doggo.js");    
 app.use(doggoRoute);   // REST for the doggo model
 
+const usersRoute = require('./routes/users.js');
+app.use(usersRoute); // REST for the user model /transferring  representations of a resource(user json object) to transfer its state from server/lives there/ to client
 
-const port = process.env.PORT ? process.env.PORT : 8888;
+const authRoute = require('./routes/auth.js');   
+app.use(authRoute);
+
+
+// If undefined, start on 3000, else start on the provided portnumber
+
+const port = process.env.PORT ? process.env.PORT : 3000;
 
 server.listen(port, (error) => {
     if (error) {

@@ -1,5 +1,6 @@
 body {
 	margin: 0;
+    background: #222;
 	color: #fafafa;
 	font-family: 'Thasadith', sans-serif;
 }
@@ -23,13 +24,13 @@ body {
 	border: 1px solid rgba(255, 255, 255, .17);
 	position: absolute;
 	left: 75px;
-	top: 25px;
+	top: 35px;
 	padding: 10px;
-	width: 200px;
+	width: 310px;
 }
 
 .logo-icon {
-	width: 20px;
+	width: 35px;
 	float: left;
 	margin-right: 5px;
 	padding-right: 5px;
@@ -39,9 +40,10 @@ body {
 	display: block;
 	opacity: .43;
 	text-transform: uppercase;
-	font-size: 16px;
+	font-size: 26px;
 	margin-top: 2px;
 }
+
 
 /* slogan */
 
@@ -96,6 +98,7 @@ body {
 	background: #c19656;
 }
 
+
 /* Footer */
 
 .footer {
@@ -109,4 +112,17 @@ body {
 
 #footer-wrapper {
     font-size: 0.8em;
+}
+
+
+ul {
+    margin: 0 auto;
+    display: block;
+    line-height: 55px;
+    margin-bottom: 100px;
+}
+
+.about {
+	font-size: 1.3em;
+	padding: 0 90px; 
 }

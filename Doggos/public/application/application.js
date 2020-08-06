@@ -14,7 +14,7 @@ function validateForm() {
     }
 
     if (!emailReg.test(email)) {
-        sweetAlert("Wrong e-mail address - please check");
+        sweetAlert("Wrong e-mail address - please verify");
         return false;
     }
 
@@ -36,4 +36,3 @@ function validateForm() {
     return true;
     
 }
-    

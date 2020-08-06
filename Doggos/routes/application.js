@@ -3,9 +3,15 @@ const path = require('path');
 const Application = require('../models/Application.js');
 const Doggo = require('../models/Doggo.js');
 
+
 router.get('/apply', (req, res) => {
-    return res.sendFile(path.join(__dirname, '../public/application/application.html'));
-});
+
+    if(req.session.user) {
+        return res.sendFile(path.join(__dirname, '../public/application/application.html'));
+    } else {
+        return res.redirect('/login');
+    }
+ });
 
 router.post('/apply', async (req, res) => {
 
@@ -30,7 +36,7 @@ router.post('/apply', async (req, res) => {
 
                 });
 
-                return res.send({ response: `Succesfully aplied for adoption of our dog number ${submittedApplication.doggo_id} Please wait patiently for our response!`});
+                return res.send({ response: `Succesfully applied for adoption of our dog number ${submittedApplication.doggo_id} Please wait patiently for our response!`});
             }
         } catch (error) {
             return res.status(500).send({ response: "Something went wrong with the database" + error});
