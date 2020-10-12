@@ -1,5 +1,3 @@
-//Knex is used for data migration
-
 const credentials = require("./config/mysqlCred");
 const { knexSnakeCaseMappers } = require('objection');
 

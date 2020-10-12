@@ -3,7 +3,7 @@ $(document).ready(function() {
     var pathArray = url.split("/");
     var id = pathArray[4];
 
-    $.ajax({
+    $.ajax({                                  
         "url": "/doggos/collection/" + id,
         "type": "GET",
         "datatype": 'json',
@@ -37,13 +37,9 @@ $(document).ready(function() {
             var table = $('#doggos').DataTable();
             $(document).on("click", "#doggos tr", function(e) {
                 var id = table.row(this).id();
-                window.location = "http://localhost:8888/doggos/" + id;
+                window.location = "http://localhost:3000/doggos/" + id;
                 //alert( 'Clicked row id ' + id );
             });
         }
     })
 });
-
-            
-        // technika tworzenia aplikacji internetowych, w których interakcja użytkownika z serwerem odbywa się bez przeładowywania całego dokumentu, w sposób asynchroniczny.
-        // Ma to umożliwiać bardziej dynamiczną interakcję z użytkownikiem niż w tradycyjnym modelu

@@ -3,5 +3,5 @@ module.exports = {
     user: 'root',
     password: 'password',
     sessionSecret: 'some session secret',
-    host: "localhost"
+    host: 'localhost'
 };

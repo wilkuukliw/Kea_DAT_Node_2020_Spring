@@ -4,13 +4,10 @@
     height: 300px;
     font-size: 20px;
     background-color: #FAF3DD;
+    border-radius: 5px;
 }
 
 .talk {
-    padding-top: 0px;
-    padding-right: 0px;
-    padding-bottom: 0px;
-    padding-left: 0px;
     width: 280px;
     height: 50px;
     border-radius:25px;
@@ -18,8 +15,6 @@
 
 #submit {
     background-color: #a3d668;
-    padding-top: 0px;
-    padding-bottom: 0px;
 }  
 
 body {
@@ -46,14 +41,13 @@ body {
 	box-shadow: none;
 }
 
-.chat-input {
+input[type=text] {
     height: 50px;
-    width: 86.5%;
+    width: 45%;
     border-radius: 5px;
     margin-left: 70px;
     border: none;
     padding: 0 0.5em 0 0.5em;
     transition: all 0.7s;
     zoom: 100%
-    
-  }
+}

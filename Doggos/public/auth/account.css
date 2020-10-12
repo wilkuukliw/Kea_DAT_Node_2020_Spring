@@ -5,7 +5,7 @@ input[type=text], input[type=password] {
     display: block;
     text-align: center;
     border-radius: 25px;
-    
+
 }
 
 .account-container {
@@ -34,7 +34,6 @@ button {
 	border-radius: 25px;
 	line-height: 40px;
 	padding: 0 30px;
-    margin-right: 20px;
 }
 
 button:hover {
@@ -44,7 +43,7 @@ button:hover {
 a {
     font-family: 'Thasadith', sans-serif;
     font-weight: 700; 
-    color: #000000 !important; 
+    color: whitesmoke !important; 
     text-transform: uppercase; 
     letter-spacing: 2px; 
     text-decoration: none;
@@ -55,6 +54,20 @@ a {
 
 body {
     background: url('../img/bg4.jpg');
-    min-height: 100vh;
+    height:100%;
     background-repeat: no-repeat;
 }
+
+textarea {
+    width: 30%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    margin-left: 100px;
+
+  }

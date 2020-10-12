@@ -36,3 +36,30 @@ function validateForm() {
     return true;
     
 }
+
+$("#submit").click(function() {
+         
+    var name = $("#name").val();
+    var email = $("#email").val();
+    var phone = $("#phone").val();
+    var doggo_id = $("#doggo_id").val();
+    
+    if ( name == '' || email == '' || phone == '' || doggo_id == '' ) {
+    
+       Swal.fire({
+          title: "Fields empty",
+          text: "Please fill the missing fields",
+          icon: "warning",
+          button: "OK"
+       });
+    } else {
+       
+       Swal.fire({
+          title: "Successfully aplied for the doggo! :)",
+          text: "success",
+          icon: "success",
+          button: "OK"
+       });
+    }
+ });
+    

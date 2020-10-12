@@ -18,7 +18,7 @@ router.get('/doggos/:id', (req,res) => {
 
 router.get('/doggo/collection/:id', async (req, res) => {
     try {
-        const doggo = await Doggo.query().select('*').where('id', req.params.id);
+        const doggo = await Doggo.query().select('*').where('id', req.params.id); 
         
         if (doggo.length > 0 ) {
         return res.send({ response: doggo });

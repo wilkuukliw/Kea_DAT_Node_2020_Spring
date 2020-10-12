@@ -44,7 +44,6 @@ body {
 	margin-top: 2px;
 }
 
-
 /* slogan */
 
 .slogan {
@@ -58,7 +57,7 @@ body {
 }
 
 .slogan-text {
-	font-size: 20px;
+	font-size: 22px;
 	color: #d0c4bc;
 	font-weight: 100; 
 	line-height: 24px;
@@ -98,7 +97,6 @@ body {
 	background: #c19656;
 }
 
-
 /* Footer */
 
 .footer {
@@ -113,7 +111,6 @@ body {
 #footer-wrapper {
     font-size: 0.8em;
 }
-
 
 ul {
     margin: 0 auto;

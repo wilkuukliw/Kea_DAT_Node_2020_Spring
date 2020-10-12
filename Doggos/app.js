@@ -4,11 +4,11 @@ const helmet = require('helmet');
 const escape = require('escape-html');
 app.use(express.static('public'))
 app.use(express.static('.'));
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: false })); 
 app.use(helmet()); 
-const session = require('express-session');  
+const session = require('express-session'); 
+ 
 
 app.use(session({
     secret: require('./config/mysqlCred.js').sessionSecret,  
@@ -34,17 +34,17 @@ app.get("/about", (req,res) =>{
 
 /* knex and objection */
 
-const { Model } = require('objection');  // used to create an extra abstraction layer to make objects with. built on an SQL query builder - knex
+const { Model } = require('objection'); 
 const Knex = require('knex');    
 const knexFile = require('./knexfile.js');
 
-const knex = Knex(knexFile.development);    // connection from the knexfile
+const knex = Knex(knexFile.development);   
 
-Model.knex(knex);  // build in method - objects now are aware of the connection 
+Model.knex(knex);  
 
 /* sockets */ 
 
-const server = require('http').createServer(app);   // creating an HTTP server yourself, instead of having Express create one for you is useful if you want to reuse the HTTP server, for example to run socket.io within the same HTTP server instance
+const server = require('http').createServer(app);   
 
 const io = require('socket.io')(server);  // pass server to io library
 
@@ -52,27 +52,20 @@ io.on('connection', socket => {    // initialize connection, this callback conta
 
    socket.on("Listen to the client!", ({ talk }) => {
        
-         io.emit("User said", { talk: escape(talk) });  // sends out to all the clients
+         io.emit("User said", { talk: escape(talk) }); 
 
         }); 
 });
 
-
-// setup route with server instance
 const applicationRoute = require("./routes/application.js");    
-app.use(applicationRoute);   // REST for the application model
-
+app.use(applicationRoute);   
 const doggoRoute = require("./routes/doggo.js");    
-app.use(doggoRoute);   // REST for the doggo model
-
-const usersRoute = require('./routes/users.js');
-app.use(usersRoute); // REST for the user model /transferring  representations of a resource(user json object) to transfer its state from server/lives there/ to client
-
+app.use(doggoRoute);   
 const authRoute = require('./routes/auth.js');   
 app.use(authRoute);
+const addRoute = require('./routes/add-dog.js');   
+app.use(addRoute);
 
-
-// If undefined, start on 3000, else start on the provided portnumber
 
 const port = process.env.PORT ? process.env.PORT : 3000;
 

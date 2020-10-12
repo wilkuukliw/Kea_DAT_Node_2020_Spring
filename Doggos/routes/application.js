@@ -28,12 +28,11 @@ router.post('/apply', async (req, res) => {
                 });
             } else {
 
-                const submittedApplication = await Application.query().insert({            //przekazywanie danych do modelu
+                const submittedApplication = await Application.query().insert({
                     name,
                     email,
                     phone,
                     doggo_id
-
                 });
 
                 return res.send({ response: `Succesfully applied for adoption of our dog number ${submittedApplication.doggo_id} Please wait patiently for our response!`});

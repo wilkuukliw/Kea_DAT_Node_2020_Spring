@@ -1,5 +1,5 @@
 body {
-    background-color: #B9D6F3;
+    background-image: linear-gradient(to top, #fddb92 0%, #d1fdff 100%);
     background-size: cover;
     min-height: 100vh; 
 }
@@ -7,7 +7,7 @@ body {
   #doggos thead,
   #doggos th {
     text-align: center;
-    color: black !important;
+    color:black !important;
 }
 
 .dt-center {
@@ -22,4 +22,28 @@ body {
 label {
   display: inline-block;
   margin: 25px;
+}
+
+.floating-btn {
+  background-color: #AFC7D0;
+  width: 70px;
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  vertical-align: middle;
+  font-size: 50px;
+  text-align: center;
+  line-height: 70px;
+  border-radius: 100%;
+}
+
+.floating-btn:hover {
+  background-color: pink;
+}
+
+a {
+  font-family: 'Thasadith', sans-serif;
+  font-weight: 700; 
+  color: whitesmoke !important; 
+  text-transform: uppercase; 
 }

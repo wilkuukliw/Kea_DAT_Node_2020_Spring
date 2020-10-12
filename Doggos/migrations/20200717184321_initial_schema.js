@@ -39,5 +39,3 @@ exports.down = function(knex) {
         .dropTableIfExists('doggos')
         .dropTableIfExists('users');
 };
-
-//If exports.up created a table, then exports.down will drop that table. If exports.up added a column, then exports.down will remove that column. The reason to include exports.down is so that you can quickly undo a migration should you need to.

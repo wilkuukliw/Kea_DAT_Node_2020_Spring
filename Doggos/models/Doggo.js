@@ -8,7 +8,7 @@ class Doggo extends Model {
 
     static relationMappings = { 
         applications: {
-            relation: Model.HasManyRelation,    //documentation >> https://vincit.github.io/objection.js/guide/relations.html
+            relation: Model.HasManyRelation, 
             modelClass: Application,
             join: {
                 from: 'doggos.id',
@@ -17,6 +17,5 @@ class Doggo extends Model {
         }
     }
 }
-
 
 module.exports = Doggo;
